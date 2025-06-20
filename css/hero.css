@@ -1,0 +1,86 @@
+.mrn-c-hero {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  min-height: 300px;
+  max-height: 1100px;
+  overflow: hidden;
+  background: url('../img/hero-banner-fallback.jpg') center / cover;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mrn-c-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.mrn-c-hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  max-width: 1000px;
+  width: 100%;
+  padding: 1rem 3rem;
+  text-align: center;
+  color: #fff;
+}
+
+.mrn-c-hero-content h1 {
+  font: 500 clamp(2rem, 5vw, 3rem)/1.2 inherit;
+  margin-bottom: 1rem;
+}
+
+.mrn-c-hero-content p {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  margin-bottom: 2rem;
+  color: #eee;
+}
+
+.mrn-c-hero-btn {
+  background: #cd9b2c;
+  color: #000;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mrn-c-hero-btn:hover,
+.mrn-c-hero-btn:focus {
+  background: #b78926;
+  outline: none;
+}
+
+@media (min-width: 769px) {
+  .mrn-c-hero-content p {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .mrn-c-hero { height: 60vh; }
+}
+
+@media (max-width: 480px) {
+  .mrn-c-hero { height: 50vh; }
+  .mrn-c-hero-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,198 @@
+/* ================================================
+   Component Imports
+   ================================================ */
+@import url(./header.css);
+@import url(./main.css);
+@import url(./menu.css);
+@import url(./footer.css);
+@import url(./hero.css);
+@import url(./blockquote.css);
+@import url(./about.css);
+@import url(./contact.css);
+
+/* ================================================
+   CSS Custom Properties (Design Tokens)
+   ================================================ */
+:root {
+  /* Brand Colors */
+  --mrn-brown-main: #5e1b12;
+  --mrn-yellow-main: #cd9b2c;
+  --mrn-gray-main: #f5f5f5;
+  --mrn-dark-yellow-main: #b58926;
+
+  /* SVG Color Filter */
+  --mrn-yellow-main-svg: brightness(0) saturate(100%) invert(66%) sepia(18%) saturate(1844%) hue-rotate(3deg) brightness(97%) contrast(75%);
+  --mrn-brown-main-svg: brightness(0) saturate(100%) invert(12%) sepia(31%) saturate(4335%) hue-rotate(345deg) brightness(97%) contrast(96%);
+
+  /* Responsive Breakpoints */
+  --sm: 540px;
+  --md: 720px;
+  --lg: 960px;
+  --xl: 1140px;
+  --xxl: 1320px;
+}
+
+/* ================================================
+   Global Styles & Reset
+   ================================================ */
+*,
+*::before,
+*::after {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+* {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-family: "Fredoka", "Lora", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Times New Roman", Times, serif, "Open Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+/* Typography Reset */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+/* Headings: Fredoka | Body text: Lora */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Fredoka", sans-serif;
+}
+
+ul,
+p {
+  font-family: "Lora", serif;
+}
+
+/* Base Element Styles */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+hr {
+  width: 100%;
+  height: 2px;
+}
+
+/* ================================================
+   Layout System
+   ================================================ */
+.mrn-l-grid-container {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
+  position: relative;
+}
+
+/* Custom Container System */
+/* .mrn-l-container {
+  width: 100%;
+  padding-right: calc(1.5rem * 0.5);
+  padding-left: calc(1.5rem * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .mrn-l-container {
+    max-width: var(--sm);
+  }
+}
+
+@media (min-width: 768px) {
+  .mrn-l-container {
+    max-width: var(--md);
+  }
+}
+
+@media (min-width: 992px) {
+  .mrn-l-container {
+    max-width: var(--lg);
+  }
+}
+
+@media (min-width: 1200px) {
+  .mrn-l-container {
+    max-width: var(--xl);
+  }
+}
+
+@media (min-width: 1400px) {
+  .mrn-l-container {
+    max-width: var(--xxl);
+  }
+} */
+
+/* ================================================
+   Utility Classes
+   ================================================ */
+/* hr line */
+.mrn-c-hr-generic {
+  background-color: var(--mrn-yellow-main);
+  height: 3px;
+  border: none;
+  margin: 0;
+  opacity: 1;
+}
+.mrn-c-hr {
+  height: 3px;
+  background-color: var(--mrn-yellow-main);
+  width: 100%;
+  opacity: 0;
+  margin: 0 auto 2rem;
+  border: none;
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+.mrn-c-hr.visible {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* Transition */
+.mrn-l-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.mrn-l-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

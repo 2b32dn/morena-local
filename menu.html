@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <title>Menu - Morena Restaurant</title>
+  <link rel="icon" type="image/x-icon" href="./img/morenalogo.jpg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="mrn-l-grid-container">
+    <header class="mrn-c-header" id="header" data-include="./components/header.html"></header>
+    <main class="mrn-c-menu container-fluid col-xxl-10 p-4 mt-5">
+      <section class="mrn-c-breadcrumb-container">
+        <h1 class="mrn-c-breadcrumb__title" data-i18n="breadcrumb.nav.menu">
+          Menu
+        </h1>
+        <nav class="mrn-c-breadcrumb-nav pt-3 pb-1" aria-label="breadcrumb">
+          <ul class="breadcrumb mrn-c-breadcrumb">
+            <li class="breadcrumb-item mrn-c-breadcrumb__item">
+              <a class="mrn-c-breadcrumb__link" href="#combo" data-i18n="breadcrumb.nav.combo">
+                Combo
+              </a>
+            </li>
+            <li class="breadcrumb-item mrn-c-breadcrumb__item">
+              <a class="mrn-c-breadcrumb__link" href="#main" data-i18n="breadcrumb.nav.main">
+                Main
+              </a>
+            </li>
+            <li class="breadcrumb-item mrn-c-breadcrumb__item">
+              <a class="mrn-c-breadcrumb__link" href="#soups" data-i18n="breadcrumb.nav.soups.noodles">
+                Soups & Noodles
+              </a>
+            </li>
+            <li class="breadcrumb-item mrn-c-breadcrumb__item">
+              <a class="mrn-c-breadcrumb__link" href="#specials" data-i18n="breadcrumb.nav.specials.extras">
+                Specials & Extras
+              </a>
+            </li>
+            <li class="breadcrumb-item mrn-c-breadcrumb__item">
+              <a class="mrn-c-breadcrumb__link" href="#desserts" data-i18n="breadcrumb.nav.desserts.drinks">
+                Desserts & Drinks
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+      <hr class="mrn-c-hr">
+      <section class="container-fluid px-0 py-5">
+        <div id="combo" class="mrn-c-menu-section">
+          <h2 class="px-3" data-i18n="menu.combo.title">
+            Combo Meals
+          </h2>
+          <div class="row">
+            <div id="combo-menu-list" class="col-lg-6 mt-4"></div>
+            <div class="col-lg-6 mt-4">
+              <div class="mrn-c-menu-figure-container">
+                <figure>
+                  <img class="mrn-c-menu__img" src="./img/menu/menu-set-m.jpg" alt="Spaghetti with two Fried Chicken pieces" />
+                </figure>
+                <p class="mrn-c-menu__text" data-i18n="menu.combo.m.img.desc">
+                  Enjoy a comforting plate of sweet-style Filipino spaghetti paired with two crispy, golden fried
+                  chicken pieces for a hearty and nostalgic meal.
+                </p>
+              </div>
+              <div class="mrn-c-menu-figure-container">
+                <figure>
+                  <img class="mrn-c-menu__img" src="./img/menu/menu-set-o.jpg" alt="Palabok with One Pork BBQ Skewer" />
+                </figure>
+                <p class="mrn-c-menu__text" data-i18n="menu.combo.o.img.desc">
+                  Savor the rich, savory flavors of palabok noodles topped with garlic and chicharrón, complemented
+                  perfectly by a tender, smoky pork BBQ skewer.
+                </p>
+              </div>
+              <div class="mrn-c-menu-figure-container">
+                <figure>
+                  <img class="mrn-c-menu__img" src="./img/menu/menu-set-r.jpg" alt="Pancit with Fried Chicken and Pork BBQ Skewer" />
+                </figure>
+                <p class="mrn-c-menu__text" data-i18n="menu.combo.r.img.desc">
+                  A flavorful combo of stir-fried pancit noodles served with a crispy fried chicken piece and a
+                  succulent pork BBQ skewer for the ultimate trio of Filipino favorites.
+                </p>
+              </div>
+              <div class="mrn-c-menu-figure-container">
+                <figure>
+                  <img class="mrn-c-menu__img" src="./img/menu/menu-set-e.jpg" alt="Rice with One Fried Chicken and Fish Fillet" />
+                </figure>
+                <p class="mrn-c-menu__text" data-i18n="menu.combo.e.img.desc">
+                  This satisfying dish features fluffy white rice served with a crunchy fried chicken piece and a
+                  lightly breaded, golden fish fillet for a tasty land-and-sea combo.
+                </p>
+              </div>
+              <div class="mrn-c-menu-figure-container">
+                <figure>
+                  <img class="mrn-c-menu__img" src="./img/menu/menu-set-n.jpg" alt="Rice with Two Fried Chicken and Pork BBQ Skewer" />
+                </figure>
+                <p class="mrn-c-menu__text" data-i18n="menu.combo.n.img.desc">
+                  Packed with flavor, this hearty meal comes with two crispy fried chicken pieces and a smoky pork BBQ
+                  skewer, all served over a bed of rice.
+                </p>
+              </div>
+              <div class="mrn-c-menu-figure-container">
+                <figure>
+                  <img class="mrn-c-menu__img" src="./img/menu/menu-set-a.jpg" alt="Rice with Fish Fillet and Chicken BBQ" />
+                </figure>
+                <p class="mrn-c-menu__text" data-i18n="menu.combo.a.img.desc">
+                  A delightful pairing of tender chicken BBQ and crispy fish fillet served over steamed rice, offering a
+                  balance of smoky, savory, and crispy textures.
+                </p>
+              </div>
+              <div class="mrn-c-menu-figure-container">
+                <figure>
+                  <img class="mrn-c-menu__img" src="./img/menu/menu-set-h.jpg" alt="Rice with Pork BBQ Skewer and Chicken BBQ" />
+                </figure>
+                <p class="mrn-c-menu__text" data-i18n="menu.combo.h.img.desc">
+                  Perfectly grilled pork and chicken BBQ skewers served over rice for a smoky, savory combo that's big
+                  on flavor and satisfying to the last bite.
+                </p>
+              </div>
+              <div class="mrn-c-menu-figure-container">
+                <figure>
+                  <img class="mrn-c-menu__img" src="./img/menu/menu-set-j.jpg" alt="Rice with Chicken BBQ" />
+                </figure>
+                <p class="mrn-c-menu__text" data-i18n="menu.combo.j.img.desc">
+                  Simple yet delicious, this meal features juicy, marinated chicken BBQ served over a bed of warm,
+                  fluffy rice for a classic and comforting option.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="main" class="mrn-c-menu-section">
+          <h2 class="px-3" data-i18n="menu.main.title">
+            Main
+          </h2>
+          <div class="row">
+            <div class="col-lg-6 mt-4">
+              <h3 class="px-3 mb-3" data-i18n="menu.main.subtitle.1">
+                Platter
+              </h3>
+              <hr class="mrn-c-hr-generic">
+              <div id="platter-menu-list">
+              </div>
+              <h3 class="px-3 mb-3" data-i18n="menu.main.subtitle.2">
+                Silog
+              </h3>
+              <hr class="mrn-c-hr-generic">
+              <div id="silog-menu-list">
+              </div>
+              <h3 class="px-3 mb-3" data-i18n="menu.main.subtitle.3">
+                PIKA-PIKA (Appetizers)
+              </h3>
+              <hr class="mrn-c-hr-generic">
+              <div id="pika-pika-menu-list">
+              </div>
+              <h3 class="px-3 mb-3" data-i18n="menu.main.subtitle.4">
+                Veggies
+              </h3>
+              <hr class="mrn-c-hr-generic">
+              <div id="veggies-menu-list">
+              </div>
+            </div>
+            <div class="col-lg-6 mt-4">
+            </div>
+          </div>
+        </div>
+        <div id="soups" class="mrn-c-menu-section">
+          <h2 class="px-3" data-i18n="menu.soups.noodles.title">
+            Soups & Noodles
+          </h2>
+          <div class="row">
+            <div class="col-lg-6 mt-4">
+              <div id="soups-menu-list">
+              </div>
+              <hr class="mrn-c-hr-generic" />
+              <div id="noodles-menu-list">
+              </div>
+            </div>
+            <div class="col-lg-6 mt-4">
+            </div>
+          </div>
+        </div>
+        <div id="specials" class="mrn-c-menu-section">
+          <h2 class="px-3" data-i18n="menu.specials.extras.title">
+            Specials & Extras
+          </h2>
+          <div class="row">
+            <div class="col-lg-6 mt-4">
+              <h3 class="px-3 mb-3" data-i18n="menu.specials.extras.subtitle.1">
+                Specials
+              </h3>
+              <hr class="mrn-c-hr-generic">
+              <div id="specials-menu-list">
+              </div>
+              <h3 class="px-3 mb-3" data-i18n="menu.specials.extras.subtitle.2">
+                Extras
+              </h3>
+              <hr class="mrn-c-hr-generic">
+              <div id="extras-menu-list">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="desserts" class="mrn-c-menu-section">
+          <h2 class="px-3" data-i18n="menu.desserts.drinks.title">
+            Desserts & Drinks
+          </h2>
+          <div class="row">
+            <div class="col-lg-6 mt-4">
+              <div id="desserts-menu-list">
+              </div>
+            </div>
+            <div class="col-lg-6 mt-4">
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="mrn-c-footer" id="footer" data-include="./components/footer.html"></footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/includes.js"></script>
+  <script src="./js/i18n.js"></script>
+  <script src="./js/menu.js?v=1.0.1"></script>
+  <script src="./js/contact.js"></script>
+  <script src="./js/header.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      await includeHTML();
+      initI18n();
+      initHeaderBehavior();
+      loadMenu();
+      loadMainMenu();
+      loadSoupsNoodlesMenu();
+      loadSpecialsExtrasMenu();
+      loadDessertsDrinksMenu();
+    });
+  </script>
+</body>
+
+</html>
