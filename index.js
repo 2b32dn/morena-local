@@ -9,10 +9,10 @@ const cors = require("cors");
 app.use(cors());
 
 const pool = new Pool({
-	user: "morena",
+	user: "postgres",
 	host: "localhost",
-	database: "morenarestaurant",
-	password: "morenarestaurant",
+	database: "restauranttest",
+	password: "1234",
 	port: 5432, // default PostgreSQL port
 });
 
@@ -23,7 +23,7 @@ pool
 	.catch((err) => console.error("Connection error", err.stack));
 
 // GET endpoint for Combo menu items
-app.get("/api/menu/combo", async (req, res) => {
+app.get("/menu/combo", async (req, res) => {
 	try {
 		const result = await pool.query(
 			`SELECT 
@@ -46,7 +46,7 @@ app.get("/api/menu/combo", async (req, res) => {
 });
 
 // GET endpoint for Main Dishes menu items
-app.get("/api/menu/main", async (req, res) => {
+app.get("/menu/main", async (req, res) => {
 	try {
 		const result = await pool.query(
 			`SELECT 
@@ -69,7 +69,7 @@ app.get("/api/menu/main", async (req, res) => {
 });
 
 // GET endpoint for Soup & Noodles menu items
-app.get("/api/menu/soup&noodles", async (req, res) => {
+app.get("/menu/soup&noodles", async (req, res) => {
 	try {
 		const result = await pool.query(
 			`SELECT 
@@ -92,7 +92,7 @@ app.get("/api/menu/soup&noodles", async (req, res) => {
 });
 
 // GET endpoint for Specials & Extras menu items
-app.get("/api/menu/specials&extras", async (req, res) => {
+app.get("/menu/specials&extras", async (req, res) => {
 	try {
 		const result = await pool.query(
 			`SELECT 
@@ -115,7 +115,7 @@ app.get("/api/menu/specials&extras", async (req, res) => {
 });
 
 // GET endpoint for Desserts & Drinks menu items
-app.get("/api/menu/desserts&drinks", async (req, res) => {
+app.get("/menu/desserts&drinks", async (req, res) => {
 	try {
 		const result = await pool.query(
 			`SELECT 
@@ -137,6 +137,6 @@ app.get("/api/menu/desserts&drinks", async (req, res) => {
 	}
 });
 
-app.listen(port, "0.0.0.0", () => {
+app.listen(port, () => {
 	console.log(`Server running at http://localhost:${port}`);
 });
