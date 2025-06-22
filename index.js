@@ -4,6 +4,8 @@ const { Pool } = require("pg");
 const app = express();
 const port = 3000;
 
+app.use(express.json());
+
 // Enable CORS for all routes
 const cors = require("cors");
 app.use(cors());
@@ -21,6 +23,28 @@ pool
 	.connect()
 	.then(() => console.log("Connected to PostgreSQL"))
 	.catch((err) => console.error("Connection error", err.stack));
+
+// GET endpoint for all menu items
+app.get("/menu", async (req, res) => {
+	try {
+		const result = await pool.query(
+			`SELECT 
+					md.lang_code,
+					md.title,
+					md.description,
+					mp.price::TEXT,
+					mi.code
+				FROM menu_items mi
+				JOIN menu_descriptions md ON mi.id = md.item_id
+				JOIN menu_prices mp ON mi.id = mp.item_id
+				JOIN menu_categories mc ON mi.category_id = mc.id`
+		);
+		res.json(result.rows);
+	} catch (err) {
+		console.error(err);
+		res.status(500).send("Error fetching menu items");
+	}
+});
 
 // GET endpoint for Combo menu items
 app.get("/menu/combo", async (req, res) => {
