@@ -34,7 +34,7 @@ app.get("/menu", async (req, res) => {
       FROM menu_items mi
       JOIN menu_descriptions md ON mi.id = md.item_id
       JOIN menu_prices mp ON mi.id = mp.item_id
-      JOIN menu_categories mc ON mi.category_id = mc.id`
+      JOIN menu_categories mc ON mi.category_id = mc.id ORDER BY md.id`
 		);
 		res.json(result.rows);
 	} catch (err) {
@@ -79,28 +79,50 @@ app.get("/menu/:category", async (req, res) => {
 app.post("/menu", async (req, res) => {
 	const { lang_code, title, description, price, code } = req.body;
 	try {
-		const categoryResult = await pool.query(
-			`SELECT id FROM menu_categories WHERE $1 = ANY (string_to_array(lower(category_name), ' '))`,
-			[code.split(".")[2]]
-		);
+		// Extract category name from code (e.g., "main" from "menu.main.chicken.adobo.title")
+		const rawCategory = code.split(".")[1];
+
+		const categoryResult = await pool.query(`SELECT id FROM menu_categories WHERE lower(category_name) LIKE $1`, [
+			`%${rawCategory.replace(".", " ")}%`,
+		]);
 
 		if (categoryResult.rows.length === 0) return res.status(400).send("Invalid category");
 
 		const category_id = categoryResult.rows[0].id;
-		const insertItem = await pool.query(`INSERT INTO menu_items (category_id, code) VALUES ($1, $2) RETURNING id`, [
-			category_id,
-			code,
-		]);
-		const item_id = insertItem.rows[0].id;
 
-		await pool.query(`INSERT INTO menu_descriptions (item_id, lang_code, title, description) VALUES ($1, $2, $3, $4)`, [
-			item_id,
-			lang_code,
-			title,
-			description,
-		]);
+		// Try inserting menu_items; ignore if it already exists
+		const insertItem = await pool.query(
+			`INSERT INTO menu_items (category_id, code)
+       VALUES ($1, $2)
+       ON CONFLICT (code) DO NOTHING
+       RETURNING id`,
+			[category_id, code]
+		);
 
-		await pool.query(`INSERT INTO menu_prices (item_id, price) VALUES ($1, $2)`, [item_id, price]);
+		let item_id;
+		if (insertItem.rows.length > 0) {
+			item_id = insertItem.rows[0].id;
+		} else {
+			// Code exists — retrieve existing item_id
+			const existing = await pool.query(`SELECT id FROM menu_items WHERE code = $1`, [code]);
+			item_id = existing.rows[0].id;
+		}
+
+		// Insert language-specific description
+		await pool.query(
+			`INSERT INTO menu_descriptions (item_id, lang_code, title, description)
+       VALUES ($1, $2, $3, $4)
+       ON CONFLICT DO NOTHING`,
+			[item_id, lang_code, title, description]
+		);
+
+		// Insert price (if not already inserted)
+		await pool.query(
+			`INSERT INTO menu_prices (item_id, price)
+       VALUES ($1, $2)
+       ON CONFLICT DO NOTHING`,
+			[item_id, price]
+		);
 
 		res.status(201).json({ message: "Item added successfully" });
 	} catch (err) {
