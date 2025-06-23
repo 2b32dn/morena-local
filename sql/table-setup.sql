@@ -38,5 +38,4 @@ CREATE TABLE menu_img_descriptions (
 INSERT INTO menu_categories (category_name) VALUES 
 ('Combo'), ('Main Dishes'), ('Soup & Noodles'), ('Specials & Extras'), ('Desserts & Drinks');
 
-ALTER TABLE menu_descriptions
-ADD CONSTRAINT unique_item_lang UNIQUE (item_id, lang_code);
+ALTER TABLE menu_descriptions ADD CONSTRAINT unique_item_lang UNIQUE (item_id, lang_code);
