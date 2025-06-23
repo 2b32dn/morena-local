@@ -118,8 +118,6 @@ app.put("/menu/:code/:lang_code", async (req, res) => {
 		if (item.rows.length === 0) return res.status(404).send("Item not found");
 
 		const item_id = item.rows[0].id;
-
-		// 🔄 UPSERT for menu_descriptions
 		await pool.query(
 			`INSERT INTO menu_descriptions (item_id, lang_code, title, description)
        VALUES ($1, $2, $3, $4)
@@ -127,10 +125,7 @@ app.put("/menu/:code/:lang_code", async (req, res) => {
        DO UPDATE SET title = EXCLUDED.title, description = EXCLUDED.description`,
 			[item_id, lang_code, title, description]
 		);
-
-		// 🔄 Update price
 		await pool.query(`UPDATE menu_prices SET price = $1 WHERE item_id = $2`, [price, item_id]);
-
 		res.json({ message: "Item updated successfully" });
 	} catch (err) {
 		console.error(err);
@@ -143,9 +138,7 @@ app.delete("/menu/:code", async (req, res) => {
 	try {
 		const item = await pool.query(`SELECT id FROM menu_items WHERE code = $1`, [code]);
 		if (item.rows.length === 0) return res.status(404).send("Item not found");
-
 		const item_id = item.rows[0].id;
-
 		await pool.query(`DELETE FROM menu_descriptions WHERE item_id = $1`, [item_id]);
 		await pool.query(`DELETE FROM menu_prices WHERE item_id = $1`, [item_id]);
 		await pool.query(`DELETE FROM menu_items WHERE id = $1`, [item_id]);

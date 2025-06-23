@@ -17,18 +17,30 @@
       <select id="categoryFilter" class="form-select">
         <option value="combo">Combo</option>
         <option value="main">Main Dishes</option>
-        <option value="soupsnoodles">Soups & Noodles</option>
+        <option value="soupnoodles">Soups & Noodles</option>
         <option value="dessertsdrinks">Desserts & Drinks</option>
         <option value="specialsextras">Specials & Extras</option>
       </select>
     </div>
 
     <form id="addItemForm" class="row g-2 mb-4">
-      <div class="col-md-2"><input type="text" name="lang_code" class="form-control" placeholder="Lang" required /></div>
-      <div class="col-md-2"><input type="text" name="title" class="form-control" placeholder="Title" required /></div>
+      <div class="col-md-2">
+        <select name="lang_code" id="lang_code" class="form-select" required>
+          <option value="">Select Lang</option>
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="tl">Tagalog</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <input type="text" name="title" id="titleInput" class="form-control" placeholder="Title" required />
+      </div>
+
       <div class="col-md-2"><input type="text" name="description" class="form-control" placeholder="Description" /></div>
       <div class="col-md-2"><input type="text" name="price" class="form-control" placeholder="Price" required /></div>
-      <div class="col-md-3"><input type="text" name="code" class="form-control" placeholder="Code" required /></div>
+      <div class="col-md-3">
+        <input type="text" name="code" id="codeInput" class="form-control" placeholder="Code" required />
+      </div>
       <div class="col-md-1 d-grid"><button class="btn btn-primary">Add</button></div>
     </form>
 
@@ -117,6 +129,31 @@
     document.getElementById("categoryFilter").addEventListener("change", loadMenu);
 
     loadMenu();
+
+    // Automatically update code input when title changes
+    document.getElementById("titleInput").addEventListener("input", () => {
+      const rawTitle = document.getElementById("titleInput").value.trim();
+      const category = document.getElementById("categoryFilter").value;
+
+      const slug = rawTitle
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, ".")   // convert spaces/specials to dots
+        .replace(/^\.|\.$/g, "");      // remove leading/trailing dots
+
+      const prefixMap = {
+        combo: "menu.combo",
+        main: "menu.main",
+        soupsnoodles: "menu.soups.noodles",
+        dessertsdrinks: "menu.desserts.drinks",
+        specialsextras: "menu.specials.extras",
+      };
+
+      const prefix = prefixMap[category] || "menu.unknown";
+
+      const fullCode = `${prefix}.${slug}.title`;
+      document.getElementById("codeInput").value = fullCode;
+    });
+
   </script>
 </body>
 
