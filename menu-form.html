@@ -82,15 +82,16 @@
 
     async function updateItem(btn) {
       const row = btn.closest("tr");
-      const [lang, title, desc, price, code] = row.querySelectorAll("input");
-      await fetch(`http://localhost:3000/menu/${code.value}/${lang.value}`, {
+      const inputs = row.querySelectorAll("input");
+      const lang = inputs[0].value.trim();
+      const title = inputs[1].value.trim();
+      const desc = inputs[2].value.trim();
+      const price = inputs[3].value.trim();
+      const code = inputs[4].value.trim();
+      await fetch(`http://localhost:3000/menu/${code}/${lang}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          title: title.value,
-          description: desc.value,
-          price: price.value,
-        }),
+        body: JSON.stringify({ title, description: desc, price }),
       });
       alert("Updated!");
     }

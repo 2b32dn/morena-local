@@ -274,7 +274,7 @@ async function loadMainMenu() {
 
 async function loadSoupsNoodlesMenu() {
 	try {
-		const response = await fetch("http://localhost:3000/menu/soup&noodles");
+		const response = await fetch("http://localhost:3000/menu/soupnoodles");
 		if (!response.ok) throw new Error("Network response was not ok");
 
 		const allSoupsNoodlesMenuItems = await response.json();
@@ -356,7 +356,7 @@ async function loadSoupsNoodlesMenu() {
 
 async function loadSpecialsExtrasMenu() {
 	try {
-		const response = await fetch("http://localhost:3000/menu/specials&extras");
+		const response = await fetch("http://localhost:3000/menu/specialsextras");
 		if (!response.ok) throw new Error("Network response was not ok");
 
 		const allSpecialsExtrasMenuItems = await response.json();
@@ -438,7 +438,7 @@ async function loadSpecialsExtrasMenu() {
 
 async function loadDessertsDrinksMenu() {
 	try {
-		const response = await fetch("http://localhost:3000/menu/desserts&drinks");
+		const response = await fetch("http://localhost:3000/menu/dessertsdrinks");
 		if (!response.ok) throw new Error("Network response was not ok");
 
 		const allDessertsDrinksMenuItems = await response.json();
